@@ -11,21 +11,44 @@
 {{item.name}}
   </div>
   <br>
-  <div class="text-center">
-    <!-- <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination> -->
+
+
+          <div class="row">
+              <div class="col-md-4">
+                <div ngbDropdown class="d-inline-block">
+                  <span>Items per page &nbsp;</span>
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{itemsPerPage}}</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <!-- setPage(currentSelectedPage) -->
+                    <button *ngFor = "let lines of linesPerPage"  (click)="selectedChange(lines); setPage(1)" class="dropdown-item">{{lines}}</button>
+                  </div>
+                </div>
+              </div>
+
+<div class="col-md-5">
     <ul class="pagination">
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link " (click)="setPage(1)" ><<</a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link" (click)="setPage(pager.currentPage - 1)" ><</a></li>
-        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item"><a class="page-link" (click)="setPage(page)" >{{page}}</a></li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item"><a class="page-link" (click)="setPage(page); currentPage(page)" >{{page}}</a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link" (click)="setPage(pager.currentPage + 1)"  >></a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link"  (click)="setPage(pager.totalPages)" >>></a></li>
       </ul>
-    
-    <hr>
-    <div class="bg-info">
-        <pre>Current page: {{ pager.currentPage}}</pre>
+</div>
+
+<div class="col-md-3">
+    <div class="pull-right text-center">
+        <span class="result">Displaying</span>
+        <span class="active-page">{{pager.startIndex + 1}}-{{pager.endIndex + 1}}</span>
+        <span>of</span>
+        <span class="total-pages">{{pager.totalPages}}</span>
     </div>
-   
+</div>
+              
+              
+            
+            
   </div>
+ 
 
 </div>
+<div style="height: 800px"></div>

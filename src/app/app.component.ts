@@ -9,7 +9,9 @@ import { PagerService } from './services/pagging-service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'app';
+  itemsPerPage: number = 10;
+  linesPerPage: number[] = [10, 20, 30, 40, 50];
+  currentSelectedPage;
   allItems;
      // pager object
      pager: any = {};
@@ -21,13 +23,22 @@ export class AppComponent implements OnInit {
 
   }
 
+  selectedChange(perPage) {
+    this.itemsPerPage = perPage;
+  }
+
+  currentPage(currPage) {
+    console.log("current page",currPage);
+    this.currentSelectedPage = currPage;
+  }
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.allItems.length, page);
+    this.pager = this.pagerService.getPager(this.allItems.length, page, this.itemsPerPage);
     console.log("pager object", this.pager);
 
     // get current page of items
