@@ -26,13 +26,21 @@
               </div>
 
 <div class="col-md-5">
-    <ul class="pagination">
+    <ul class="pagination" >
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link " (click)="setPage(1)" ><<</a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link" (click)="setPage(pager.currentPage - 1)" ><</a></li>
         <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item"><a class="page-link" (click)="setPage(page); currentPage(page)" >{{page}}</a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link" (click)="setPage(pager.currentPage + 1)"  >></a></li>
         <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link"  (click)="setPage(pager.totalPages)" >>></a></li>
       </ul>
+
+      <!-- <ul class="pagination">
+          <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link " (click)="setPage(1)" ><<</a></li>
+          <li class="page-item"  [ngClass]="{disabled: pager.currentPage === 1}"><a class="page-link" (click)="setPage(pager.currentPage - 1)" ><</a></li>
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item"><a class="page-link" (click)="setPage(page); currentPage(page)" >{{page}}</a></li>
+          <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link" (click)="setPage(pager.currentPage + 1)"  >></a></li>
+          <li class="page-item"  [ngClass]="{disabled: pager.currentPage === pager.totalPages}"><a class="page-link"  (click)="setPage(pager.totalPages)" >>></a></li>
+        </ul> -->
 </div>
 
 <div class="col-md-3">
